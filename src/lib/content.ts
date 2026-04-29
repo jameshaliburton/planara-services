@@ -1,11 +1,13 @@
 /**
  * Services content — single source of truth.
- * Keep editing here; sections import from this file.
+ * Reflects the agentic-AI-consultancy positioning: Services delivers agentic
+ * systems for global enterprises; mobile/backend/strategy are delivery
+ * capabilities in support of that, not standalone offerings.
  */
 
 export const STATS = [
   { value: "1B+", label: "Software in the hands of users" },
-  { value: "25+", label: "Fortune 100 engagements" },
+  { value: "25+", label: "Enterprise engagements" },
   { value: "Multiple", label: "Venture exits" },
 ];
 
@@ -35,46 +37,41 @@ export const CLIENT_LOGOS = [
 export const STANDARDS = [
   {
     title: "Diagnosis over prescription",
-    description: "We audit roadmaps to kill low-ROI features before code is written.",
+    description:
+      "We audit roadmaps to kill low-ROI features before code is written.",
   },
   {
     title: "Modular architecture",
-    description: "Native platforms optimized for performance and longevity.",
+    description:
+      "Native platforms optimized for performance and longevity.",
   },
   {
     title: "Agentic velocity",
-    description: "Human + AI delivery models tuned for meaningful outcomes.",
+    description:
+      "Human + AI delivery models tuned for meaningful outcomes.",
   },
 ];
 
-export const CAPABILITIES = [
+/**
+ * Delivery capabilities — in service of agentic AI deployments.
+ * No longer a standalone numbered grid; rendered as a supporting list
+ * under the agentic-AI practice statement.
+ */
+export const DELIVERY_CAPABILITIES = [
   {
-    label: "Strategy",
-    index: "01",
-    title: "Strategy & Ideation",
+    title: "Strategy & ideation",
     description:
-      "Validate the right problems and define roadmaps that survive contact with reality.",
+      "Validate where agentic AI actually solves the problem, then define the roadmap.",
   },
   {
-    label: "Mobile",
-    index: "02",
-    title: "Custom Mobile",
+    title: "Custom mobile",
     description:
-      "Native platforms (SwiftUI, Kotlin) built for scale, not for demos.",
+      "Native platforms (SwiftUI, Kotlin) that put agentic systems into the field.",
   },
   {
-    label: "Backend",
-    index: "03",
     title: "Backend & API",
     description:
-      "Secure architecture for high-throughput reliability under real load.",
-  },
-  {
-    label: "AI",
-    index: "04",
-    title: "Agentic AI",
-    description:
-      "Autonomous systems that reason, orchestrate tools, and execute reliably in production.",
+      "Secure architecture for production-grade reliability under real load.",
   },
 ];
 

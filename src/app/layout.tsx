@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Planara Services — Strategic technology consulting for Fortune 100s",
+      "Planara Services — Strategic agentic AI engagements for global enterprises",
     template: "%s — Planara Services",
   },
   description:
-    "We identify the right problems to solve, then build the systems that solve them. Veteran engineers, senior judgment, work that ships.",
+    "We diagnose where AI actually solves the problem, then build and ship the systems. Custom builds, agent architectures, production reliability — partnered with leadership.",
   applicationName: "Planara Services",
   authors: [{ name: "Planara" }],
   creator: "Planara",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Planara Services",
     title:
-      "Planara Services — Strategic technology consulting for Fortune 100s",
+      "Planara Services — Strategic agentic AI engagements for global enterprises",
     description:
-      "Veteran engineers, senior judgment, work that ships.",
+      "We diagnose where AI actually solves the problem, then build and ship the systems.",
     url: SITE_URL,
     locale: "en_US",
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Planara Services",
     description:
-      "Strategic technology consulting for Fortune 100s.",
+      "Strategic agentic AI engagements for global enterprises.",
   },
   robots: { index: true, follow: true },
 };
