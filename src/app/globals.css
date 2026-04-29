@@ -1,26 +1,90 @@
 @import "tailwindcss";
+@import "@planara/design-system/tokens.css";
+@source "../../node_modules/@planara/design-system/dist/**/*.{js,mjs}";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Planara Services — strategic technology consulting site.
+ * Brand palette + typography come from @planara/design-system/tokens.css.
+ * Dark default — matches parent brand register.
+ */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: #FFFFFF;
+  --color-primary-foreground: #131820;
+  --color-accent: #43CED6;
+  --color-accent-foreground: #131820;
+  --color-cta: #2E95F5;
+  --color-cta-foreground: #FFFFFF;
+  --color-muted: #8B94A3;
+  --color-muted-foreground: #8B94A3;
+  --color-border: rgba(255, 255, 255, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #131820;
+  --foreground: #F8FAFC;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Subtle grid texture for hero */
+@utility grid-texture {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Aurora glow — opacity-driven breathing for visibility under heavy blur. */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate(-10%, 6%) scale(1.1); opacity: 0.6; }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.18; }
+  50% { transform: translate(12%, -8%) scale(1.18); opacity: 0.5; }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.12; }
+  50% { transform: translate(9%, -5%) scale(1.1); opacity: 0.32; }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% { transform: scale(0.85); opacity: 0.25; }
+  50% { transform: scale(1.3); opacity: 0.75; }
+}
+
+.aurora-glow-1 {
+  animation: aurora-drift-1 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.aurora-glow-2 {
+  animation: aurora-drift-2 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.aurora-glow-3 {
+  animation: aurora-drift-3 17s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.aurora-glow-4 {
+  animation: aurora-pulse 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
