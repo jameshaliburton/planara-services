@@ -83,18 +83,19 @@ export default function Home() {
             <p className="mb-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">
               Leadership delivering critical software for
             </p>
-            <ul className="grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {CLIENT_LOGOS.map((logo) => (
                 <li
                   key={logo.alt}
-                  className="flex h-12 items-center justify-center grayscale opacity-50 brightness-200 contrast-50 transition-opacity hover:opacity-80"
+                  className="flex h-10 items-center justify-center"
                 >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     width={120}
                     height={36}
-                    className="h-7 w-auto max-w-[120px] object-contain"
+                    className="h-6 w-auto max-w-[120px] object-contain opacity-55 transition-opacity hover:opacity-90"
+                    style={{ filter: "brightness(0) invert(1)" }}
                   />
                 </li>
               ))}
