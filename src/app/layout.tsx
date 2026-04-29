@@ -3,8 +3,12 @@ import { PlanaraFonts } from "@planara/design-system";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Toaster } from "sonner";
-
-const SITE_URL = "https://services.planara.com";
+import {
+  SITE_URL,
+  organizationJsonLd,
+  websiteJsonLd,
+  jsonLdScriptProps,
+} from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,6 +57,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <PlanaraFonts />
+        <script {...jsonLdScriptProps(organizationJsonLd)} />
+        <script {...jsonLdScriptProps(websiteJsonLd)} />
       </head>
       <body className="relative">
         <Nav />
