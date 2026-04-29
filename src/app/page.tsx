@@ -94,8 +94,8 @@ export default function Home() {
                     alt={logo.alt}
                     width={120}
                     height={36}
-                    className="h-6 w-auto max-w-[120px] object-contain opacity-55 transition-opacity hover:opacity-90"
-                    style={{ filter: "brightness(0) invert(1)" }}
+                    className="h-6 w-auto max-w-[120px] object-contain opacity-60 transition-opacity hover:opacity-95"
+                    style={{ filter: "invert(1) hue-rotate(180deg)" }}
                   />
                 </li>
               ))}
