@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Footer } from "@planara/design-system";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Reveal } from "@/components/Reveal";
@@ -78,19 +77,16 @@ export default function Home() {
             <p className="mb-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">
               Leadership delivering critical software for
             </p>
-            <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <ul className="grid grid-cols-2 items-center gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {CLIENT_LOGOS.map((logo) => (
                 <li
                   key={logo.alt}
-                  className="flex h-10 items-center justify-center"
+                  className="flex h-16 items-center justify-center rounded-md bg-white/[0.04] px-4 py-3 transition-colors hover:bg-white/[0.07]"
                 >
-                  <Image
+                  <img
                     src={logo.src}
                     alt={logo.alt}
-                    width={120}
-                    height={36}
-                    className="h-6 w-auto max-w-[120px] object-contain opacity-60 transition-opacity hover:opacity-95"
-                    style={{ filter: "invert(1) hue-rotate(180deg)" }}
+                    className="h-7 w-auto max-w-[120px] object-contain opacity-90"
                   />
                 </li>
               ))}

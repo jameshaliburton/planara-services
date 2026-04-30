@@ -7,31 +7,43 @@
 
 export const STATS = [
   { value: "1B+", label: "Software in the hands of users" },
-  { value: "25+", label: "Enterprise engagements" },
+  { value: "25+", label: "Fortune 100 engagements" },
   { value: "Multiple", label: "Venture exits" },
 ];
 
+/**
+ * Client logos sourced from two complementary services:
+ *   - Simple Icons CDN — for brands where a clean white SVG silhouette exists
+ *   - logo.dev — for brands without a Simple Icons listing; renders in real brand colors
+ * Logos with brand color render against a subtle off-dark container plate so
+ * white-background PNGs don't show as solid blocks.
+ */
+const SI = (slug: string) => `https://cdn.simpleicons.org/${slug}/ffffff`;
+const LOGODEV_TOKEN = "pk_X-1ZO13GSgeOoUrIuJ6GMQ";
+const LD = (domain: string) =>
+  `https://img.logo.dev/${domain}?token=${LOGODEV_TOKEN}&size=160&format=png`;
+
 export const CLIENT_LOGOS = [
-  { src: "/logos/google.svg", alt: "Google" },
-  { src: "/logos/apple.svg", alt: "Apple" },
-  { src: "/logos/uber.svg", alt: "Uber" },
-  { src: "/logos/disney.svg", alt: "Disney" },
-  { src: "/logos/cisco.png", alt: "Cisco" },
-  { src: "/logos/goldman-sachs.svg", alt: "Goldman Sachs" },
-  { src: "/logos/citi.svg", alt: "Citi" },
-  { src: "/logos/ubs.png", alt: "UBS" },
-  { src: "/logos/pwc.png", alt: "PwC" },
-  { src: "/logos/bloomberg.png", alt: "Bloomberg" },
-  { src: "/logos/allianz.webp", alt: "Allianz" },
-  { src: "/logos/cigna.png", alt: "Cigna" },
-  { src: "/logos/amgen.png", alt: "Amgen" },
-  { src: "/logos/nestle.png", alt: "Nestlé" },
-  { src: "/logos/pg.png", alt: "P&G" },
-  { src: "/logos/kimberly-clark.png", alt: "Kimberly-Clark" },
-  { src: "/logos/bose.png", alt: "Bose" },
-  { src: "/logos/gillette.png", alt: "Gillette" },
-  { src: "/logos/fisher-price.png", alt: "Fisher-Price" },
-  { src: "/logos/abinbev.png", alt: "AB InBev" },
+  { src: SI("google"), alt: "Google", style: "white" as const },
+  { src: SI("apple"), alt: "Apple", style: "white" as const },
+  { src: SI("uber"), alt: "Uber", style: "white" as const },
+  { src: LD("disney.com"), alt: "Disney", style: "color" as const },
+  { src: SI("cisco"), alt: "Cisco", style: "white" as const },
+  { src: SI("goldmansachs"), alt: "Goldman Sachs", style: "white" as const },
+  { src: LD("citi.com"), alt: "Citi", style: "color" as const },
+  { src: LD("ubs.com"), alt: "UBS", style: "color" as const },
+  { src: LD("pwc.com"), alt: "PwC", style: "color" as const },
+  { src: LD("bloomberg.com"), alt: "Bloomberg", style: "color" as const },
+  { src: LD("allianz.com"), alt: "Allianz", style: "color" as const },
+  { src: LD("cigna.com"), alt: "Cigna", style: "color" as const },
+  { src: LD("amgen.com"), alt: "Amgen", style: "color" as const },
+  { src: LD("nestle.com"), alt: "Nestlé", style: "color" as const },
+  { src: LD("pg.com"), alt: "P&G", style: "color" as const },
+  { src: LD("kimberly-clark.com"), alt: "Kimberly-Clark", style: "color" as const },
+  { src: SI("bose"), alt: "Bose", style: "white" as const },
+  { src: LD("gillette.com"), alt: "Gillette", style: "color" as const },
+  { src: LD("fisher-price.com"), alt: "Fisher-Price", style: "color" as const },
+  { src: LD("ab-inbev.com"), alt: "AB InBev", style: "color" as const },
 ];
 
 export const STANDARDS = [

@@ -11,11 +11,11 @@ const formSchema = z.object({
   email: z.string().trim().email("Invalid email address").max(255),
   company: z.string().trim().min(1, "Company is required").max(100),
   message: z.string().trim().min(1, "Message is required").max(1000),
+  /** Honeypot — bots fill this; real submissions leave it empty. */
+  website: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const ACCESS_KEY = "4b6c594e-4e9e-4eef-a568-05d5fc1a06af";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,27 +30,17 @@ export function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const formData = new FormData();
-      formData.append("access_key", ACCESS_KEY);
-      formData.append("subject", "New consultation request — services.planara.com");
-      formData.append("from_name", data.name);
-      formData.append("replyto", data.email);
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("company", data.company);
-      formData.append("message", data.message);
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
-      const result = await response.json();
-
-      if (result.success) {
+      const result = await res.json();
+      if (res.ok && result.ok) {
         toast.success("Inquiry received. We'll be in touch.");
         reset();
       } else {
-        toast.error("Failed to send. Please try again.");
+        toast.error(result.error || "Failed to send. Please try again.");
       }
     } catch {
       toast.error("Failed to send. Please try again.");
@@ -65,6 +55,15 @@ export function ContactForm() {
       className="space-y-6"
       aria-label="Contact form"
     >
+      {/* Honeypot — visually hidden, bots fill it. */}
+      <input
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        {...register("website")}
+      />
       <Field
         id="name"
         label="Name"
