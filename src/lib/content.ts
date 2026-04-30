@@ -53,9 +53,9 @@ export const STANDARDS = [
       "We audit roadmaps to kill low-ROI features before code is written.",
   },
   {
-    title: "Modular architecture",
+    title: "Production reliability",
     description:
-      "Native platforms optimized for performance and longevity.",
+      "Demos are easy. Production is hard. We build agentic systems that handle real load, real edge cases, and real consequences without breaking.",
   },
   {
     title: "Agentic velocity",
@@ -84,6 +84,28 @@ export const DELIVERY_CAPABILITIES = [
     title: "Backend & API",
     description:
       "Secure architecture for production-grade reliability under real load.",
+  },
+];
+
+/**
+ * Cross-firm delivery sub-offerings.
+ * Same senior practitioners shape strategy, build the systems, run the workshops.
+ */
+export const DELIVERY_OFFERINGS = [
+  {
+    title: "Conduit Labs",
+    description:
+      "Custom integrations and platform extensions for Conduit deployments — ingestion, vertical configuration, custom UI, namespace setup.",
+  },
+  {
+    title: "Enterprise integration",
+    description:
+      "Connecting agentic systems to existing enterprise infrastructure — DMS, ERP, CMMS, identity, analytics. We build the connective tissue that makes platforms actually land.",
+  },
+  {
+    title: "Applied workshops",
+    description:
+      "Hands-on engagement with Leaders cohorts to translate strategy into shipped work, embedded with your team for the duration of the program.",
   },
 ];
 

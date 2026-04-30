@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { toast } from "sonner";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -16,44 +15,81 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+type Status = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(formSchema) });
 
   const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
+    setStatus("submitting");
+    setErrorMessage("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await res.json();
+      const result = await res.json().catch(() => ({}));
       if (res.ok && result.ok) {
-        toast.success("Inquiry received. We'll be in touch.");
-        reset();
+        setStatus("success");
       } else {
-        toast.error(result.error || "Failed to send. Please try again.");
+        setStatus("error");
+        setErrorMessage(
+          result.error ||
+            "Something went wrong on our end. Please try again, or email hello@planara.com directly.",
+        );
       }
     } catch {
-      toast.error("Failed to send. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+      setStatus("error");
+      setErrorMessage(
+        "Couldn't reach our servers. Check your connection and try again, or email hello@planara.com directly.",
+      );
     }
   };
+
+  if (status === "success") {
+    return (
+      <div
+        className="rounded-md border border-[var(--color-planara-teal)]/30 bg-[var(--color-planara-teal)]/[0.05] p-8 sm:p-10"
+        role="status"
+        aria-live="polite"
+      >
+        <p className="mb-3 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-planara-teal)]">
+          <span className="h-px w-8 bg-[var(--color-planara-teal)]" />
+          Inquiry received
+        </p>
+        <h3 className="mb-4 text-balance text-2xl font-light leading-tight tracking-tight text-white sm:text-3xl">
+          Thank you. We&apos;ll be in touch.
+        </h3>
+        <p className="text-base leading-relaxed text-white/70">
+          A senior practitioner will review your inquiry and respond within two business days. If your timeline is tighter, write directly to{" "}
+          <a
+            href="mailto:hello@planara.com"
+            className="text-[var(--color-planara-teal)] underline-offset-4 hover:underline"
+          >
+            hello@planara.com
+          </a>
+          .
+        </p>
+      </div>
+    );
+  }
+
+  const isSubmitting = status === "submitting";
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6"
       aria-label="Contact form"
+      noValidate
     >
       {/* Honeypot — visually hidden, bots fill it. */}
       <input
@@ -94,6 +130,16 @@ export function ContactForm() {
         error={errors.message?.message}
         disabled={isSubmitting}
       />
+
+      {status === "error" && (
+        <div
+          role="alert"
+          className="rounded-md border border-red-400/30 bg-red-400/[0.06] px-4 py-3 text-sm text-red-200"
+        >
+          {errorMessage}
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={isSubmitting}
@@ -153,7 +199,7 @@ function Field({
         />
       )}
       {error && (
-        <p role="alert" className="text-xs text-red-400">
+        <p role="alert" className="text-xs text-red-300">
           {error}
         </p>
       )}
