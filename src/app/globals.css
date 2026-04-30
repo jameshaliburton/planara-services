@@ -39,3 +39,15 @@ body {
 @utility text-balance {
   text-wrap: balance;
 }
+
+/* Respect users' reduced-motion preference. Sledgehammer rule that
+   collapses all animation/transition durations near-zero — overrides
+   keyframe animations on Aurora/Beams/Reveal layers. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
