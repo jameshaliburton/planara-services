@@ -7,6 +7,7 @@ import {
   CLIENT_LOGOS,
   STANDARDS,
   DELIVERY_CAPABILITIES,
+  DELIVERY_OFFERINGS,
   OPERATING_MODEL,
 } from "@/lib/content";
 
@@ -174,6 +175,48 @@ export default function Home() {
                   </h3>
                   <p className="text-sm leading-relaxed text-white/65">
                     {cap.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─────────────── Delivery across Planara ─────────────── */}
+      <section
+        aria-labelledby="delivery"
+        className="relative border-t border-white/[0.06] px-6 py-24 sm:px-10 sm:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <p className="mb-10 inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-planara-teal)]">
+              <span className="h-px w-8 bg-[var(--color-planara-teal)]" />
+              Across the firm
+            </p>
+            <h2
+              id="delivery"
+              className="mb-8 max-w-4xl text-balance text-3xl font-light leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl"
+            >
+              Delivery across Planara.
+            </h2>
+            <p className="mb-12 max-w-3xl text-base leading-relaxed text-white/70 sm:text-lg">
+              We don&apos;t hand off. The same senior practitioners who shape strategy also build the systems and run the workshops. Three ways we deliver across the firm.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="grid grid-cols-1 gap-px bg-white/[0.08] md:grid-cols-3">
+              {DELIVERY_OFFERINGS.map((o) => (
+                <div
+                  key={o.title}
+                  className="flex h-full flex-col gap-3 bg-[var(--color-planara-dark)] p-8 sm:p-10"
+                >
+                  <h3 className="text-xl font-light tracking-tight text-white">
+                    {o.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/65">
+                    {o.description}
                   </p>
                 </div>
               ))}
