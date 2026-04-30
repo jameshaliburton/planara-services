@@ -30,7 +30,7 @@ export function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="transition-colors hover:text-white"
+              className="inline-flex h-11 items-center transition-colors hover:text-white"
             >
               {l.label}
             </a>

@@ -74,7 +74,7 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <p className="mb-10 font-mono text-xs uppercase tracking-[0.2em] text-white/40">
+            <p className="mb-10 font-mono text-xs uppercase tracking-[0.2em] text-white/55">
               Leadership delivering critical software for
             </p>
             <ul className="grid grid-cols-2 items-center gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -121,7 +121,7 @@ export default function Home() {
             {STANDARDS.map((item, i) => (
               <Reveal key={item.title} delay={0.1 + i * 0.06}>
                 <div className="flex flex-col gap-3 bg-[var(--color-planara-dark)] p-8 sm:p-10">
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/40">
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/55">
                     The Planara Standard / 0{i + 1}
                   </p>
                   <h3 className="text-xl font-light tracking-tight text-white">
@@ -160,7 +160,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-white/40">
+            <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-white/55">
               In support of agentic delivery
             </p>
             <div className="grid grid-cols-1 gap-px bg-white/[0.08] md:grid-cols-3">
@@ -206,7 +206,7 @@ export default function Home() {
                     <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-planara-teal)]">
                       {pillar.label}
                     </p>
-                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/30">
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">
                       {pillar.title}
                     </p>
                   </div>
@@ -217,7 +217,7 @@ export default function Home() {
                     {pillar.description}
                   </p>
                   <div className="mt-auto border-t border-white/[0.06] pt-6">
-                    <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-white/40">
+                    <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-white/55">
                       Best for
                     </p>
                     <ul className="space-y-1.5 text-sm text-white/65">
